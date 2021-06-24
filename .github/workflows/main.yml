@@ -39,3 +39,9 @@ jobs:
         run: |
           mvn clean
           mvn compile exec:java -Dexec.mainClass="cn.imzjw.code.Run" -Dexec.args="${BEAN_CODE} ${FARM_CODE} ${HEALTH_CODE} ${JXFACTORY_CODE} ${PET_CODE} ${SGMH_CODE} ${CFD_CODE} ${DDFACTORY_CODE} ${BOTTOKEN} ${CHAT_ID}"
+
+      - name: Delete Workflow Runs
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1
