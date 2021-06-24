@@ -23,8 +23,6 @@ public class Run {
     private static final Logger LOGGER = LoggerFactory.getLogger(Run.class);
 
     public static void main(String[] args) {
-        String botToken = args[8];
-        String chat_id = args[9];
         List<String> beanList = new ArrayList<>();
         List<String> farmList = new ArrayList<>();
         List<String> healthList = new ArrayList<>();
@@ -154,7 +152,7 @@ public class Run {
         LOGGER.info("开始进行 Telegram 推送");
         try {
             msg = URLEncoder.encode(msg, "UTF-8");
-            HttpUtils.sendGet("https://api.telegram.org/bot" + botToken + "/sendMessage?" + "chat_id=" + chat_id + "&text=" + msg);
+            HttpUtils.sendGet("https://api.telegram.org/bot" + args[8] + "/sendMessage?" + "chat_id=" + args[9] + "&text=" + msg);
         } catch (UnsupportedEncodingException e) {
             LOGGER.error("tg 发送失败 -> " + e);
         }
