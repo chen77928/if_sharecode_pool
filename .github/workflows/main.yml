@@ -1,0 +1,43 @@
+name: Run
+
+on:
+  push:
+  gollum:
+  schedule:
+    - cron: '30 22 * * *'
+
+jobs:
+  Code:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: 安装 JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: 缓存 Maven 依赖
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: execute
+        env:
+          BEAN_CODE: ${{ secrets.BEAN_CODE }}
+          FARM_CODE: ${{ secrets.FARM_CODE }}
+          HEALTH_CODE: ${{ secrets.HEALTH_CODE }}
+          JXFACTORY_CODE: ${{ secrets.JXFACTORY_CODE }}
+          PET_CODE: ${{ secrets.PET_CODE }}
+          SGMH_CODE: ${{ secrets.SGMH_CODE }}
+          CFD_CODE: ${{ secrets.CFD_CODE }}
+          DDFACTORY_CODE: ${{ secrets.DDFACTORY_CODE }}
+          BOTTOKEN: ${{ secrets.BOTTOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: |
+          mvn clean
+          mvn compile exec:java -Dexec.mainClass="cn.imzjw.code.Run" -Dexec.args="${BEAN_CODE} ${FARM_CODE} ${HEALTH_CODE} ${JXFACTORY_CODE} ${PET_CODE} ${SGMH_CODE} ${CFD_CODE} ${DDFACTORY_CODE} ${BOTTOKEN} ${CHAT_ID}"
