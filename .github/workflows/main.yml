@@ -4,13 +4,11 @@ on:
   push:
   gollum:
   schedule:
-    - cron: '30 22 * * *'
+    - cron: '0 */6 * * *'
 
 jobs:
   Code:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: 安装 JDK 1.8

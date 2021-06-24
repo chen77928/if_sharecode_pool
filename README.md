@@ -7,10 +7,24 @@
 ## 使用
 
 1. fork 项目
-2. 在 `Settings -> Secrets -> New repository secret` 添加环境变量，环境变量说明见下方
-3. 然后修改 code.txt，随便加点什么东西
+
+2. 在 `Settings -> Secrets -> New repository secret` 添加环境变量，环境变量说明见[下方](https://github.com/sudojia/if_sharecode_pool#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AF%B4%E6%98%8E)
+
+3. 点击 Actions
+
+   ![images](https://7.dusays.com/2021/06/24/44411de23f16d.png)
+
+   Enable workflow
+
+   ![images](https://7.dusays.com/2021/06/24/3401299c63d2c.png)
+
+4. 然后修改仓库中的 `code.txt`，随便加点什么东西，最后提交查看 Actions 即可
+
+5. 程序默认每六个小时执行一次，可自行修改 `.github/workflows/main.yml` 里的 cron
 
 ## 环境变量说明
+
+没加判断，所有变量都必须，缺一不可！
 
 | 变量名         | 含义                                                         | 是否必须 |
 | -------------- | ------------------------------------------------------------ | -------- |
@@ -20,9 +34,13 @@
 | JXFACTORY_CODE | 京喜工厂互助码，多个请使用 `&` 分割<br/>例如 xxxxxxxx&xxxxxxxx | 是       |
 | PET_CODE       | 东东萌宠互助码，多个请使用 `&` 分割<br/>例如 xxxxxxxx&xxxxxxxx | 是       |
 | SGMH_CODE      | 闪购盲盒互助码，多个请使用 `&` 分割<br/>例如 xxxxxxxx&xxxxxxxx | 是       |
-| CFD_CODE       | 财富岛互助码，多个请使用 `&` 分割<br/>例如 xxxxxxxx&xxxxxxxx | 是       |
+| CFD_CODE       | 财富岛互助码，多个请使用 `&` 分割<br/>例如 xxxxxxxx&xxxxxxxx <br>财富岛互助码每天都变，旧的可以用，以提交的那个为准 | 是       |
 | DDFACTORY_CODE | 东东工厂互助码，多个请使用 `&` 分割<br/>例如 xxxxxxxx&xxxxxxxx | 是       |
 | BOTTOKEN       | Telegram Bot 的 Token，在 [@BotFather](https://t.me/BotFather) 可找到，没有的自己 Google 创建一个就好啦<br> 例如 13526677282:AAHizJsDqaTKASD808Oi33L8XPARZ8kmZb8 | 是       |
 | CHAT_ID        | 给 [@userinfobot](https://t.me/userinfobot) 随便发条消息就有了<br/> 例如 1334649619 | 是       |
 
-# 通知结果
+## 通知结果
+
+为 `true` 表示你的互助码在池子中了，`false` 表示不在
+
+![images](https://7.dusays.com/2021/06/24/ca6be12ea3f75.png)
