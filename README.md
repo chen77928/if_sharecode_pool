@@ -41,6 +41,6 @@
 
 ## 通知结果
 
-为 `true` 表示你的互助码在池子中了，`false` 表示不在
+为 `true` 表示互助码在池子中，`false` 表示不在
 
 ![images](https://7.dusays.com/2021/06/24/ca6be12ea3f75.png)
